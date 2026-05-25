@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mobile CARB Testing Across Northern California - On-Site OBD & OVI Testing for Trucks, Fleets, and Motorhomes">
+    <title>NorCal CARB Mobile - Mobile CARB Testing Across Northern California</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2563eb;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-phone {
+            background: #2563eb;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn-phone:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-schedule {
+            border: 2px solid #2563eb;
+            color: #2563eb;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-schedule:hover {
+            background: #2563eb;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #2563eb;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.125rem;
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.125rem;
+            border: 2px solid white;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #2563eb;
+        }
+
+        .locations {
+            margin-top: 2rem;
+            font-size: 1.125rem;
+            opacity: 0.95;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1f2937;
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .service-card:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #2563eb;
+        }
+
+        .service-card .subtitle {
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+
+        .service-card .price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #16a34a;
+            margin: 1rem 0;
+        }
+
+        .btn-learn {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid #2563eb;
+            padding: 0.5rem 1.5rem;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .btn-learn:hover {
+            background: #2563eb;
+            color: white;
+        }
+
+        /* Coverage Section */
+        .coverage {
+            padding: 5rem 2rem;
+            background: #f3f4f6;
+        }
+
+        .coverage h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1f2937;
+        }
+
+        .coverage-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .coverage-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+            list-style: none;
+        }
+
+        .coverage-list li {
+            font-size: 1.125rem;
+            padding: 0.5rem;
+        }
+
+        .coverage-list li::before {
+            content: "✓ ";
+            color: #16a34a;
+            font-weight: 700;
+            margin-right: 0.5rem;
+        }
+
+        .coverage-cta {
+            margin-top: 2rem;
+            font-size: 1.25rem;
+        }
+
+        .coverage-cta a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        /* Why Choose Section */
+        .why-choose {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .why-choose h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1f2937;
+        }
+
+        .why-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            gap: 2rem;
+        }
+
+        .why-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: start;
+            padding: 2rem;
+            background: #f9fafb;
+            border-radius: 12px;
+            border-left: 4px solid #16a34a;
+        }
+
+        .why-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .why-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #1f2937;
+        }
+
+        .why-item p {
+            color: #6b7280;
+            font-size: 1.125rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 2rem;
+            background: #f3f4f6;
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1f2937;
+        }
+
+        .testimonials-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .stars {
+            color: #fbbf24;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-card p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: #4b5563;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            padding: 5rem 2rem;
+            background: #2563eb;
+            color: white;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .final-cta p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .final-cta a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: #1f2937;
+            color: white;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #60a5fa;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .services h2,
+            .coverage h2,
+            .why-choose h2,
+            .testimonials h2,
+            .final-cta h2 {
+                font-size: 2rem;
+            }
+
+            .hero-buttons,
+            .header-buttons {
+                width: 100%;
+                justify-content: stretch;
+            }
+
+            .btn-phone,
+            .btn-schedule,
+            .btn-primary,
+            .btn-secondary {
+                flex: 1;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                🚛 NorCal CARB Mobile
+            </div>
+            <div class="header-buttons">
+                <a href="tel:+19165550199" class="btn-phone">📞 (916) 555-0199</a>
+                <a href="#schedule" class="btn-schedule">Schedule</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Mobile CARB Testing Across Northern California</h1>
+            <p>On-Site OBD & OVI Testing for Trucks, Fleets, and Motorhomes</p>
+            <div class="hero-buttons">
+                <a href="tel:+19165550199" class="btn-primary">📞 Call Now: (916) 555-0199</a>
+                <a href="#schedule" class="btn-secondary">Schedule Online</a>
+            </div>
+            <div class="locations">
+                📍 Sacramento • Stockton • Woodland • Concord
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <h2>What We Test</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🖥️</div>
+                <h3>OBD Testing</h3>
+                <p class="subtitle">2013+ Diesel Engines</p>
+                <p>Electronic on-board diagnostics test for modern diesel engines (2013 model year and newer).</p>
+                <div class="price">$150-$219</div>
+                <a href="#services" class="btn-learn">Learn More</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">💨</div>
+                <h3>OVI Testing</h3>
+                <p class="subtitle">Pre-2013 Diesel Engines</p>
+                <p>Smoke opacity + visual inspection for older diesel engines (2012 model year and older).</p>
+                <div class="price">$150-$219</div>
+                <a href="#services" class="btn-learn">Learn More</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🚛</div>
+                <h3>Fleet Services</h3>
+                <p class="subtitle">5+ Vehicles</p>
+                <p>Volume discounts, on-site testing at your facility, and recurring test scheduling.</p>
+                <div class="price">Custom Quotes</div>
+                <a href="#schedule" class="btn-learn">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coverage Section -->
+    <section class="coverage">
+        <h2>We Come to You</h2>
+        <div class="coverage-content">
+            <p style="font-size: 1.25rem; margin-bottom: 2rem;">
+                We provide mobile CARB testing across Northern California, with primary coverage in:
+            </p>
+            <ul class="coverage-list">
+                <li>Sacramento</li>
+                <li>Stockton</li>
+                <li>Woodland</li>
+                <li>Concord</li>
+                <li>Marysville</li>
+                <li>Davis</li>
+                <li>Vacaville</li>
+                <li>Fairfield</li>
+            </ul>
+            <div class="coverage-cta">
+                <p>Not sure if we cover your area? Call us!</p>
+                <a href="tel:+19165550199">📞 (916) 555-0199</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="why-choose">
+        <h2>Why Customers Choose Us</h2>
+        <div class="why-grid">
+            <div class="why-item">
+                <div class="why-icon">✅</div>
+                <div>
+                    <h3>Mobile Service</h3>
+                    <p>No trip to the test station - we come to you, saving you time and hassle.</p>
+                </div>
+            </div>
+
+            <div class="why-item">
+                <div class="why-icon">✅</div>
+                <div>
+                    <h3>Same-Day Testing</h3>
+                    <p>Fast turnaround, get your results today and stay compliant.</p>
+                </div>
+            </div>
+
+            <div class="why-item">
+                <div class="why-icon">✅</div>
+                <div>
+                    <h3>BAR Certified</h3>
+                    <p>Fully licensed and compliant with California regulations.</p>
+                </div>
+            </div>
+
+            <div class="why-item">
+                <div class="why-icon">✅</div>
+                <div>
+                    <h3>Transparent Pricing</h3>
+                    <p>No hidden fees, clear upfront quotes, and volume discounts for fleets.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2>Recent Tests & Happy Customers</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Bryan came to our Woodland location and tested our fleet of 3 trucks in one visit. Professional and efficient!"</p>
+                <p class="testimonial-author">— TS&L Seed, Woodland</p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Saved me hours driving to Sacramento. Tested my motorhome at R-Ranch at the Lake in Napa."</p>
+                <p class="testimonial-author">— Nick Conti, Concord</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="schedule">
+        <h2>Ready to Schedule Your Test?</h2>
+        <p>Call <a href="tel:+19165550199"><strong>(916) 555-0199</strong></a> or email us at <a href="mailto:bryan@norcalcarbmobile.com"><strong>bryan@norcalcarbmobile.com</strong></a></p>
+        <a href="tel:+19165550199" class="btn-primary" style="margin-top: 1rem;">📅 Schedule Appointment</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#services">OBD Testing</a></li>
+                    <li><a href="#services">OVI Testing</a></li>
+                    <li><a href="#services">Fleet Services</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Coverage</h3>
+                <ul>
+                    <li>Sacramento</li>
+                    <li>Stockton</li>
+                    <li>Woodland</li>
+                    <li>Concord</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li>📞 <a href="tel:+19165550199">(916) 555-0199</a></li>
+                    <li>✉️ <a href="mailto:bryan@norcalcarbmobile.com">bryan@norcalcarbmobile.com</a></li>
+                    <li>📍 Sacramento, CA</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>About</h3>
+                <p>NorCal CARB Mobile provides professional mobile CARB emissions testing across Northern California.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 NorCal CARB Mobile | BAR Certified | All Rights Reserved</p>
+        </div>
+    </footer>
+</body>
+</html>
