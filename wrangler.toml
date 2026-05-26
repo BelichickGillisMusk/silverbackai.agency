@@ -5,3 +5,11 @@ pages_build_output_dir = "dist"
 [vars]
 # Add your standard environment variables here (do not add secrets here)
 # GEMINI_API_KEY should be added as a Secret via the Cloudflare Pages dashboard
+
+[[routes]]
+pattern = "silverbackai.agency"
+custom_domain = true
+
+[[routes]]
+pattern = "www.silverbackai.agency"
+custom_domain = true
