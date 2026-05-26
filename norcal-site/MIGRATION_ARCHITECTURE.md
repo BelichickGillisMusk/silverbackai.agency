@@ -27,10 +27,10 @@
 ```
 /                                 Home
 ├── /about                        (← /team)
-├── /book                         Booking / scheduling  (← /book-schedule-carb-smoke-test-sacramento)
+├── /book                         Booking + Stripe Checkout invoice  (← /book-schedule-carb-smoke-test-sacramento)
 ├── /contact                      (← /contact-us)
 ├── /pricing                      (← /clean-truck-check-rates)
-├── /reviews                      (← /reviews-service-area)
+├── /clean-truck-check-reviews    Reviews (SEO slug)  (← /reviews-service-area, /clean-truck-top-review)
 │
 ├── SERVICES (money pages — flat slugs)
 │   ├── /services/                Services hub  (← /services-mobile-ovi-smoke)
@@ -79,10 +79,12 @@
 │   ├── /resources/carb-mobile-app (← /carb-mobile-app)
 │   └── /resources/engine-family-lookup  NEW (VECI / test-group helper)
 │
-├── /blog/                        Blog index  (← /clean-truck-check-blog)
-│   └── /blog/{post-slug}         40+ posts (← /clean-truck-check-blog/{slug})
-│
-└── utility: /404, /sitemap.xml, /robots.txt
+└── BLOG — lives on WordPress (already exported).
+    /clean-truck-check-blog and /clean-truck-check-blog/{slug} are LIVE and
+    PRESERVED unchanged via Cloudflare reverse-proxy. NOT migrated, NOT remapped,
+    NOT redirected. No /blog/ slug introduced (would orphan live links).
+
+utility: /404, /sitemap.xml, /robots.txt
 ```
 
 ---
@@ -97,8 +99,8 @@
 | `/contact-us` | `/contact` | 301 |
 | `/book-schedule-carb-smoke-test-sacramento` | `/book` | 301 |
 | `/clean-truck-check-rates` | `/pricing` | 301 |
-| `/reviews-service-area` | `/reviews` | 301 |
-| `/clean-truck-top-review` | `/reviews` | 301 (verify: external review link?) |
+| `/reviews-service-area` | `/clean-truck-check-reviews` | 301 |
+| `/clean-truck-top-review` | `/clean-truck-check-reviews` | 301 |
 
 ### Services
 | Old (live) | New | Type |
@@ -141,20 +143,23 @@
 | `/clean-truck-check-orange-county` | `/locations/orange-county` | 301 |
 | `/service-locations` (index) | `/locations/` | 301 |
 
-### Blog (40+ posts)
+### Blog — PRESERVE (WordPress, no redirects)
+| Old (live) | Action | Note |
+|---|---|---|
+| `/clean-truck-check-blog` | **KEEP** | Reverse-proxied to WordPress origin |
+| `/clean-truck-check-blog/{slug}` | **KEEP** | All 40+ posts unchanged — URLs stay live |
+| `/service-locations/{case-study-slug}` | **CONFIRM** | If exported to WP too → proxy/keep; else 301 → `/locations/` |
+
+> Blog is already exported to WordPress and its URLs are live. We do **not** touch them. A Cloudflare Worker / Pages Function intercepts `/clean-truck-check-blog/*` and proxies to the WP origin, so the static site serves everything else. Excluded from `_redirects` entirely.
+
+### Store removed → Stripe Checkout
 | Old (live) | New | Type |
 |---|---|---|
-| `/clean-truck-check-blog` | `/blog/` | 301 |
-| `/clean-truck-check-blog/{slug}` | `/blog/{slug}` | 301 (1:1, slug preserved) |
-| `/service-locations/{case-study-slug}` | `/blog/{slug}` | 301 (location case studies → blog) |
+| `/store` | `/book` | 301 |
+| `/store/p/*` | `/book` | 301 |
+| `/new-page` | `/` | 301 (junk Squarespace page; deindex) |
 
-> Blog decision: **preserve each post's existing slug** under `/blog/` so we only change the parent path once. Full 1:1 list to be generated from the sitemap (all 40+ enumerated, no post left without a redirect).
-
-### Junk / needs decision
-| Old (live) | Proposed | Note |
-|---|---|---|
-| `/new-page` | 301 → `/` or 410 | Squarespace default empty page; should be deindexed |
-| `/store`, `/store/p/*` | **OPEN** | Squarespace Commerce — no Cloudflare equivalent. Needs commerce decision (see §5). |
+> No storefront. Payment is via **Stripe Checkout / invoices we generate** (Worker at `pay.norcalcarbmobile.com` or embedded on `/book`).
 
 ---
 
@@ -170,7 +175,7 @@
 
 ## 4. Canonical / sitemap / robots strategy
 
-- **Canonical host:** pick one (`www` vs apex) and 301 the other globally at the edge. Live site uses `www`. **Decision needed** — recommend apex `norcalcarbmobile.com` going forward, 301 `www` → apex.
+- **Canonical host:** LOCKED → **apex `norcalcarbmobile.com`**. Global 301 `www.*` → apex at the edge. (Live site currently serves `www`, so this is a one-time host migration handled by the first rule in `_redirects`.)
 - **Single XML sitemap** generated at build from the page manifest; submit in Search Console immediately post-launch.
 - **robots.txt** allows all, points to `/sitemap.xml`.
 - Every migrated page carries a self-referential `<link rel="canonical">`.
@@ -184,10 +189,11 @@
 |---|---|
 | Static pages | **Cloudflare Pages** (pre-rendered HTML per route — fast mobile) |
 | Redirects | `_redirects` file (Pages) OR Worker map in **KV** for the ~80 entries |
-| Dynamic bits (booking, contact form) | **Worker** + KV/Queue, or embed Cal.com/Stripe |
-| Schema injection | Worker middleware or build-time JSON-LD per template |
+| Booking / payment | **Stripe Checkout** invoices we generate (Worker at `pay.norcalcarbmobile.com`, linked from `/book`). No storefront. |
+| Blog | **Reverse-proxy** `/clean-truck-check-blog/*` → WordPress origin via Pages Function. Live URLs untouched. |
+| Contact form | **Worker** + KV (or email forward) |
+| Schema injection | Build-time JSON-LD per template |
 | Shared layout/CSS | External `/assets/site.css` + shared header/footer partials (NOT inlined per-page) |
-| Commerce (`/store`) | **OPEN** — Stripe Checkout on a Worker (you already have `pay.norcalcarbmobile.com`), or keep store on Squarespace subdomain |
 
 ---
 
@@ -212,13 +218,19 @@
 
 ---
 
-## 8. Open decisions blocking final lock
+## 8. Decisions — LOCKED (2026-05-25)
 
-1. **Store/commerce** (`/store`, 4 product SKUs): Stripe-on-Worker, keep on Squarespace, or drop? 
-2. **Canonical host:** apex vs `www`.
-3. **Repo home:** this builds in `workers/norcalcarbmobile` (the github repo) per your org layout — that repo isn't in this session yet.
-4. **`/clean-truck-top-review`** and any external review platform links — keep external or fold into `/reviews`.
-5. **`/services/` hub vs flat-only:** confirmed keeping flat money pages + a `/services/` overview hub. OK?
+1. **Store/commerce:** ✅ No storefront. Stripe Checkout invoices we generate. `/store*` → `/book`.
+2. **Canonical host:** ✅ Apex `norcalcarbmobile.com`; 301 `www` → apex.
+3. **Repo home:** ✅ Best target is `workers/norcalcarbmobile` (github repo). Not in this session, so building the relocatable Cloudflare Pages project under `silverbackai.agency/norcal-site/` (clean structure: `_redirects`, `/assets/`, `functions/`) ready to drop into that repo.
+4. **Reviews slug:** ✅ `/clean-truck-check-reviews` (SEO). Old review URLs 301 there.
+5. **`/services/` hub + flat money pages:** ✅ confirmed.
+6. **Blog:** ✅ Stays on WordPress; live URLs preserved via reverse-proxy.
+
+### Remaining inputs needed (not blocking the build of the rest)
+- **WordPress origin hostname** for the `/clean-truck-check-blog/*` proxy (placeholder used until provided).
+- **`/service-locations/*`** case studies: also in WordPress, or 301 → `/locations/`?
+- **Logo image files** to drop into `/assets/logos/` (exact brand hex pending the files).
 
 ---
 

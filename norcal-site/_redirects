@@ -1,0 +1,63 @@
+# NorCal CARB Mobile — Cloudflare Pages redirects
+# Format: <from> <to> <status>   (first match wins; ! forces over static files)
+# Generated from live Squarespace crawl 2026-05-25. See MIGRATION_ARCHITECTURE.md.
+#
+# NOTE: /clean-truck-check-blog/* is intentionally ABSENT here.
+# It is reverse-proxied to WordPress by functions/clean-truck-check-blog/[[path]].js
+# so the existing live blog URLs keep working unchanged.
+
+# --- Canonical host: force apex (www -> apex) ---
+https://www.norcalcarbmobile.com/* https://norcalcarbmobile.com/:splat 301!
+
+# --- Core / conversion ---
+/home                                            /                            301
+/team                                            /about                       301
+/contact-us                                      /contact                     301
+/book-schedule-carb-smoke-test-sacramento        /book                        301
+/clean-truck-check-rates                         /pricing                     301
+/reviews-service-area                            /clean-truck-check-reviews   301
+/clean-truck-top-review                          /clean-truck-check-reviews   301
+
+# --- Services (money pages, flat slugs) ---
+/clean-truck-check                               /obd-clean-truck-check       301
+/smoke-opacity-test-near-me                      /opacity-smoke-test          301
+/services-mobile-ovi-smoke                       /services/                   301
+# /motorhome stays put (ranking URL) — no redirect
+/agricultural-vehicles-clean-truck-check         /industries/agriculture      301
+
+# --- Compliance ---
+/what-is-clean-truck-check                        /compliance/what-is-clean-truck-check  301
+/carb-penalties-deadlines                         /compliance/penalties-deadlines        301
+
+# --- Resources ---
+/carb-resources                                  /resources/                  301
+/faqs-carb-clean-truck-check-mobile              /resources/faqs              301
+/qa-and-glossary                                 /resources/glossary          301
+/carb-mobile-app                                 /resources/carb-mobile-app   301
+
+# --- Locations (standardized /locations/{city}) ---
+/service-area-sacramento-carb-testing            /locations/sacramento            301
+/service-area-san-joaquin-county-mobile-testing  /locations/san-joaquin-county    301
+/service-area-butte-county-clean-truck-check     /locations/butte-county          301
+/clean-truck-check-napa-st-helena-calistoga      /locations/napa                  301
+/north-bay-carb-mobile-testing                   /locations/north-bay             301
+/east-bay-mobile-carb-testing                    /locations/east-bay              301
+/clean-truck-check-bay-area                      /locations/bay-area              301
+/tracy-livermore-clean-truck-check-j1667         /locations/tracy-livermore       301
+/clean-truck-check-fresno                        /locations/fresno                301
+/clean-truck-check-hayward                       /locations/hayward               301
+/clean-truck-check-fairfield                     /locations/fairfield             301
+/san-jose-mobile-carb-testing                    /locations/san-jose              301
+/clean-truck-check-lodi                          /locations/lodi                  301
+/clean-truck-check-roseville                     /locations/roseville             301
+/carb-mobile-clean-truck-check-antioch-california /locations/antioch              301
+/clean-truck-check-san-diego                     /locations/san-diego             301
+/clean-truck-check-orange-county                 /locations/orange-county         301
+/service-locations                               /locations/                      301
+
+# --- Store removed -> Stripe Checkout invoicing on /book ---
+/store                                            /book                        301
+/store/p/*                                        /book                        301
+
+# --- Junk Squarespace default page ---
+/new-page                                         /                            301

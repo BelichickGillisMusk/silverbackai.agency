@@ -1,0 +1,91 @@
+/* NorCal CARB Mobile — shared stylesheet (all pages link this).
+   Brand colors are provisional (eyeballed from logos); replace hex with exact
+   samples once logo files land in /assets/logos/. */
+:root {
+  --navy: #0a2540;
+  --navy-2: #14315a;
+  --green: #4caf3f;
+  --green-2: #3d9132;
+  --ink: #1f2933;
+  --muted: #5b6770;
+  --bg: #ffffff;
+  --bg-2: #f5f7fa;
+  --line: #e3e8ef;
+  --maxw: 1140px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--ink); line-height: 1.6; background: var(--bg);
+}
+a { color: var(--green-2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }
+
+/* Header */
+.site-header { position: sticky; top: 0; z-index: 50; background: #fff; border-bottom: 1px solid var(--line); }
+.site-header .bar { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.brand { font-weight: 800; font-size: 1.25rem; color: var(--navy); white-space: nowrap; }
+.brand .carb { color: var(--green); }
+.nav { display: flex; gap: 1.25rem; align-items: center; }
+.nav a { color: var(--ink); font-weight: 600; font-size: .95rem; }
+.nav a:hover { color: var(--green-2); text-decoration: none; }
+.btn { display: inline-block; font-weight: 700; border-radius: 8px; padding: .7rem 1.25rem; transition: .2s; }
+.btn-green { background: var(--green); color: #fff; }
+.btn-green:hover { background: var(--green-2); text-decoration: none; }
+.btn-navy { background: var(--navy); color: #fff; }
+.btn-navy:hover { background: var(--navy-2); text-decoration: none; }
+.btn-ghost { border: 2px solid #fff; color: #fff; }
+.btn-ghost:hover { background: #fff; color: var(--navy); text-decoration: none; }
+
+/* Hero */
+.hero { background: linear-gradient(135deg, var(--navy), var(--navy-2)); color: #fff; padding: 4.5rem 0; text-align: center; }
+.hero h1 { font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 800; line-height: 1.1; }
+.hero h1 .hl { color: var(--green); }
+.hero p { font-size: 1.2rem; margin: 1rem auto 1.75rem; max-width: 640px; opacity: .95; }
+.hero .cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.eyebrow { text-transform: uppercase; letter-spacing: 1px; font-weight: 700; color: var(--green); font-size: .85rem; }
+
+/* Trust strip */
+.trust { background: #fff; border-bottom: 1px solid var(--line); }
+.trust .row { display: flex; flex-wrap: wrap; justify-content: space-around; gap: 1rem; padding: 1.5rem 0; text-align: center; }
+.trust .item b { display: block; color: var(--navy); }
+.trust .item span { color: var(--muted); font-size: .9rem; }
+
+/* Sections */
+section.block { padding: 4rem 0; }
+section.alt { background: var(--bg-2); }
+.section-head { text-align: center; max-width: 700px; margin: 0 auto 2.5rem; }
+.section-head h2 { font-size: clamp(1.6rem, 4vw, 2.4rem); color: var(--navy); font-weight: 800; }
+.section-head p { color: var(--muted); margin-top: .5rem; font-size: 1.1rem; }
+
+/* Cards */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.card { background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--green); border-radius: 12px; padding: 2rem; }
+.card h3 { color: var(--navy); font-size: 1.4rem; margin-bottom: .5rem; }
+.card .price { font-size: 2rem; font-weight: 800; color: var(--green); margin: .75rem 0; }
+.card .price small { font-size: .9rem; color: var(--muted); font-weight: 600; }
+.card ul { list-style: none; margin: 1rem 0; }
+.card ul li { padding: .35rem 0 .35rem 1.5rem; position: relative; }
+.card ul li::before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 800; }
+
+/* CTA band */
+.cta-band { background: linear-gradient(135deg, var(--green), var(--green-2)); color: #fff; text-align: center; padding: 3.5rem 0; }
+.cta-band h2 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; }
+.cta-band p { font-size: 1.2rem; margin: .75rem 0 1.5rem; }
+
+/* Footer */
+.site-footer { background: var(--navy); color: #cdd7e4; padding: 3rem 0 1.5rem; }
+.site-footer .cols { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem; }
+.site-footer h4 { color: var(--green); font-size: 1rem; margin-bottom: .75rem; }
+.site-footer a { color: #cdd7e4; }
+.site-footer a:hover { color: #fff; }
+.site-footer ul { list-style: none; }
+.site-footer li { margin-bottom: .4rem; }
+.site-footer .legal { border-top: 1px solid rgba(255,255,255,.1); margin-top: 2rem; padding-top: 1.25rem; text-align: center; font-size: .85rem; color: #8a98ab; }
+
+@media (max-width: 860px) {
+  .nav { display: none; }
+  .site-footer .cols { grid-template-columns: 1fr 1fr; }
+}
