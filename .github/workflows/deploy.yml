@@ -19,4 +19,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: bafa242dd95d3fdce72540d20accd0a2
-          command: pages deploy dist --project-name=silverbackai-agency
+          command: pages deploy dist --project-name=silverback-site
