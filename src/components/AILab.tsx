@@ -4,12 +4,10 @@ import {
   Image as ImageIcon, Video, Music, Mic, Zap, Search, 
   MessageSquare, Camera, Sparkles, Settings2, Download, Play, Square, Loader2, X
 } from 'lucide-react';
-import { GoogleGenAI } from '@google/genai';
 import { auth, loginWithGoogle, logout, db } from '../lib/firebase';
+import { generateContent, getImageFromResponse, getTextFromResponse } from '../lib/gemini-proxy';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { collection, addDoc, serverTimestamp, query, where, getDocs, orderBy, limit } from 'firebase/firestore';
-
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || '' });
 
 // We define a fallback layout for the lab.
 export default function AILab() {
@@ -142,31 +140,22 @@ function ImageStudio({ user }: { user: User }) {
     fetchGallery();
   }, [user.uid]);
   
-  // Note: SDK generateImages uses models
   const generate = async () => {
     setLoading(true);
     setResult('');
     try {
-      // Use generateContent for nano banana series (gemini-2.5 / gemini-3.1)
-      const res = await ai.models.generateContent({
+      const res = await generateContent({
         model,
         contents: { parts: [{ text: prompt }] },
         config: {
           imageConfig: {
-            aspectRatio: aspect as any,
-            imageSize: model.includes('3.1') ? size as any : undefined
+            aspectRatio: aspect,
+            imageSize: model.includes('3.1') ? size : undefined
           }
         }
       });
 
-      let b64 = '';
-      for (const part of res.candidates?.[0]?.content?.parts || []) {
-        if (part.inlineData) {
-          b64 = `data:image/jpeg;base64,${part.inlineData.data}`;
-          break;
-        }
-      }
-
+      const b64 = getImageFromResponse(res);
       if (!b64) throw new Error('No image returned from model');
       
       setResult(b64);
@@ -420,11 +409,10 @@ function VoiceStudio({ user }: { user: User }) {
   const generateTTS = async () => {
     setLoading(true);
     try {
-      const res = await ai.models.generateContent({
+      await generateContent({
         model: 'gemini-3.1-flash-tts-preview',
         contents: text
       });
-      // Try to parse audio if available, normally it's inlineData with MIME audio/mp3
       alert('TTS Generated! (Check console for raw blob structure in a real genenv)');
     } catch(e) {
       console.error(e);
@@ -482,11 +470,12 @@ function FastChat({ user }: { user: User }) {
     setInput('');
     
     try {
-      const res = await ai.models.generateContent({
+      const res = await generateContent({
         model: 'gemini-3.1-flash-lite-preview',
         contents: txt
       });
-      setMsgs(prev => [...prev, { my: false, text: res.text || '...' }]);
+      const text = getTextFromResponse(res) || '...';
+      setMsgs(prev => [...prev, { my: false, text }]);
     } catch (e) {
         setMsgs(prev => [...prev, { my: false, text: `Error: ${String(e)}` }]);
     }

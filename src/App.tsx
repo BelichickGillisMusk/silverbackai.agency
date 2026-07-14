@@ -33,17 +33,15 @@ import {
   Sparkles,
   Languages
 } from 'lucide-react';
-import { GoogleGenAI } from "@google/genai";
 import { translations, Language } from './translations';
 import { useFeatureFlags } from './lib/featureFlags';
+import { generateContent, getImageFromResponse } from './lib/gemini-proxy';
 import SmsToolkit from './SmsToolkit';
 import HotButton from './HotButton';
 import AILab from './components/AILab';
 import GillySecurity from './GillySecurity';
 import PcInvestments from './PcInvestments';
 import ShowcasePage from './components/ShowcasePage';
-
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || '' });
 
 // This is the "Silverback Brain" — The data Dave needs
 const INITIAL_DATA = [
@@ -119,7 +117,7 @@ export default function App() {
   useEffect(() => {
     async function generateHero() {
       try {
-        const response = await ai.models.generateContent({
+        const response = await generateContent({
           model: 'gemini-2.5-flash-image',
           contents: {
             parts: [
@@ -130,15 +128,12 @@ export default function App() {
           },
         });
 
-        for (const part of response.candidates?.[0]?.content?.parts || []) {
-          if (part.inlineData) {
-            setHeroImage(`data:image/png;base64,${part.inlineData.data}`);
-            break;
-          }
+        const image = getImageFromResponse(response);
+        if (image) {
+          setHeroImage(image);
         }
       } catch (error) {
         console.error("Failed to generate hero image:", error);
-        // Fallback static image if quota exceeded
         setHeroImage("https://images.unsplash.com/photo-1541845157-a5ec084c6af2?q=80&w=2000&auto=format&fit=crop");
       }
     }
