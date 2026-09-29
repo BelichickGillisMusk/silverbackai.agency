@@ -10,6 +10,8 @@ export type FeatureFlags = {
   enable_pc_investments: boolean;
   enable_ai_lab: boolean;
   enable_hot_button: boolean;
+  /** When true, `/` can show the soft-open face. See src/lib/softOpen.ts. Default off. */
+  enable_soft_open: boolean;
 };
 
 const defaultFlags: FeatureFlags = {
@@ -22,6 +24,7 @@ const defaultFlags: FeatureFlags = {
   enable_pc_investments: true,
   enable_ai_lab: true,
   enable_hot_button: true,
+  enable_soft_open: false,
 };
 
 export function useFeatureFlags() {
