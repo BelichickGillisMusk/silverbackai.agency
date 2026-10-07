@@ -60,7 +60,7 @@ export default function BrandFront() {
         <ul>
           <li>Agents take the inbox and the chase. The roster stays.</li>
           <li>Hours back go to the compliance file and the neighborhood.</li>
-          <li>Hiding behind the profit is winking in the dark. Nobody sees it.</li>
+          <li>A company can automate the truck. We do not tell them no. The shop that builds in the same city still needs people unloading the ship and filling the next one.</li>
         </ul>
         <p><a className="go" href="/questionnaire">Free questionnaire · no obligation</a></p>
       </section>
