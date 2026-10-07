@@ -3,6 +3,7 @@ import {createRoot} from 'react-dom/client';
 import App from './App.tsx';
 import BlueCollarHome from './BlueCollarHome.tsx';
 import SilverbackFront from './SilverbackFront.tsx';
+import BrandFront from './BrandFront.tsx';
 import './index.css';
 
 const params = new URLSearchParams(window.location.search);
@@ -13,7 +14,8 @@ const showLegacyApp =
   params.get('app') === '1' ||
   path.startsWith('/app') ||
   path === '/resources' ||
-  path === '/legacy';
+  path === '/legacy' ||
+  path === '/questionnaire';
 
 let page;
 if (showLegacyApp) {
@@ -25,7 +27,7 @@ if (showLegacyApp) {
 } else if (path === '/compliant') {
   page = <SilverbackFront page="compliant" />;
 } else {
-  page = <SilverbackFront page="home" />;
+  page = <BrandFront />;
 }
 
 createRoot(document.getElementById('root')!).render(

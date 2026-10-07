@@ -3,148 +3,129 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Silverback AI | Practical Systems for Businesses That Do the Work</title>
-  <meta name="description" content="Silverback AI connects the calls, follow-up, scheduling, paperwork, visibility and repetitive work around established businesses. Counsel, Blue Collar and Compliant." />
-  <meta name="theme-color" content="#10181d" />
-  <link rel="icon" type="image/svg+xml" href="/silverback-logo.svg" />
+  <title>Silverback AI — Stronger businesses. Safer communities.</title>
+  <meta name="description" content="Practical AI for a stronger California. Keep the people. Add capacity. Free questionnaire when you are ready." />
+  <meta name="theme-color" content="#07090d" />
+  <link rel="icon" href="/assets/silverback-mark.png" />
   <link rel="canonical" href="https://silverbackai.agency/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Silverback AI — Real Solutions. Stronger Tomorrows." />
-  <meta property="og:description" content="You built the business. We make it easier to run." />
-  <meta property="og:url" content="https://silverbackai.agency/" />
+  <meta property="og:title" content="Silverback AI — Practical AI for a stronger California." />
+  <meta property="og:description" content="Stronger businesses. Safer communities. Brighter tomorrows. The free questionnaire stays open." />
   <meta property="og:image" content="https://silverbackai.agency/assets/golden-gate-hero.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="/homepage.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root { --ink:#07090d; --gold:#c4a46a; --paper:#f4f1ea; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--ink); color:#f5f5f5; font-family:Inter,system-ui,sans-serif; }
+    a { color:inherit; text-decoration:none; }
+    .nav { display:flex; align-items:center; gap:18px; padding:16px 22px; border-bottom:1px solid #222; position:sticky; top:0; background:rgba(7,9,13,.94); z-index:5; }
+    .nav b { letter-spacing:.14em; font-size:13px; }
+    .nav nav { margin-left:auto; display:flex; gap:16px; align-items:center; font-size:11px; letter-spacing:.12em; font-weight:700; }
+    .nav nav a { color:#c8c8c8; }
+    .go { background:#f4f1ea; color:#111 !important; padding:10px 14px; border-radius:4px; }
+    .hero { display:grid; grid-template-columns:1.3fr .9fr .7fr; min-height:520px; }
+    .mark { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:48px 28px 36px; background:radial-gradient(circle at 50% 40%, #1c1c1c, #07090d 70%); }
+    .mark img { width:min(340px, 78%); filter:drop-shadow(0 18px 30px #000); }
+    .word { margin-top:18px; font-size:clamp(32px,4vw,54px); letter-spacing:.08em; font-weight:800; }
+    .word span { color:var(--gold); }
+    .sub { letter-spacing:.28em; font-size:11px; color:#cfcfcf; margin-top:8px; }
+    .promise { padding:64px 36px; border-left:1px solid #222; border-right:1px solid #222; }
+    .promise h1 { font-size:clamp(28px,3vw,40px); line-height:1.05; letter-spacing:.04em; margin:0; }
+    .promise h1 em { font-style:normal; color:var(--gold); }
+    .rule { width:42px; height:2px; background:var(--gold); margin:22px 0; }
+    .promise p { letter-spacing:.16em; font-size:12px; color:#bdbdbd; line-height:1.8; }
+    .icons { padding:28px 18px; display:flex; flex-direction:column; gap:16px; align-items:center; justify-content:center; }
+    .tile { width:148px; height:148px; border-radius:28px; display:grid; place-items:center; background:#141414; border:1px solid #2a2a2a; }
+    .tile.light { background:#f4f1ea; }
+    .tile img { width:92px; }
+    .tile small { display:block; text-align:center; letter-spacing:.16em; font-size:10px; color:#9a9a9a; margin-top:8px; }
+    .strip { display:grid; grid-template-columns:repeat(6,1fr) 1.2fr; background:var(--paper); color:#161616; padding:22px 8px; }
+    .strip div { text-align:center; font-size:10px; letter-spacing:.14em; font-weight:800; padding:8px; border-right:1px solid #ddd; }
+    .strip strong { display:block; font-size:18px; margin-bottom:8px; }
+    .ca { display:flex; align-items:center; padding:0 18px; letter-spacing:.08em; font-size:13px; font-weight:800; }
+    .split { display:grid; grid-template-columns:.9fr 1.3fr; min-height:560px; }
+    .eye { background:#050505 center/cover no-repeat; display:flex; align-items:flex-end; padding:36px; background-image:linear-gradient(#0000, #000c), url('/assets/silverback-mark.png'); background-size:cover; background-position:center 30%; }
+    .eye p { letter-spacing:.18em; font-weight:800; line-height:1.45; margin:0; }
+    .eye em { color:var(--gold); font-style:normal; }
+    .gate { position:relative; color:#111; background:#123 center/cover no-repeat; background-image:linear-gradient(#ffffffd0, #ffffff66), url('/assets/golden-gate-hero.png'); padding:28px 32px 40px; }
+    .gate h2 { font-size:clamp(36px,5vw,64px); line-height:.95; letter-spacing:-.03em; max-width:640px; margin:48px 0 12px; }
+    .gate p { max-width:520px; font-size:16px; }
+    .actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:22px; }
+    .actions a { padding:12px 16px; font-size:12px; font-weight:800; letter-spacing:.08em; border:1px solid #111; }
+    .actions .fill { background:#111; color:#fff; }
+    .foot { position:absolute; right:24px; bottom:16px; letter-spacing:.16em; font-size:11px; font-weight:700; }
+    .why { padding:64px 22px; max-width:980px; margin:0 auto; }
+    .why h2 { font-size:clamp(28px,4vw,44px); letter-spacing:-.03em; }
+    .why p, .why li { color:#c8c8c8; font-size:17px; line-height:1.55; }
+    @media (max-width:900px) {
+      .nav nav a:not(.go) { display:none; }
+      .hero, .split, .strip { grid-template-columns:1fr; }
+      .promise, .icons { border:0; }
+      .foot { position:static; display:block; margin-top:28px; }
+      .gate { padding-bottom:28px; }
+    }
+  </style>
 </head>
 <body>
-  <header class="sf-header">
-    <a class="sf-brand" href="/">
-      <img class="sf-mark" src="/assets/silverback-mark.png" alt="" />
-      <div>
-        <b>SILVERBACK AI</b>
-        <small>REAL SOLUTIONS. STRONGER TOMORROWS.</small>
-      </div>
-    </a>
+  <header class="nav">
+    <img src="/assets/silverback-mark.png" alt="" width="36" height="36" />
+    <b>SILVERBACK AI</b>
     <nav>
+      <a href="/#approach">Approach</a>
       <a href="/counsel">Counsel</a>
-      <a href="/blue-collar">Blue Collar</a>
+      <a href="/blue-collar">Blue collar</a>
       <a href="/compliant">Compliant</a>
-      <a href="/resources">Resources</a>
-      <a class="sf-call" href="tel:+14159008563">415-900-8563</a>
+      <a class="go" href="/questionnaire">Free questionnaire</a>
     </nav>
   </header>
-
-  <main>
-    <section class="sf-hero">
-      <div>
-        <div class="eyebrow">PRACTICAL AI + BUSINESS SYSTEMS</div>
-        <h1>You built the business. <em>We make it easier to run.</em></h1>
-        <p class="lead">We are not here to change what you do. We connect the calls, follow-up, scheduling, paperwork, visibility and repetitive work already happening around your business — quietly, behind the scenes.</p>
-        <div class="actions">
-          <a class="button primary" href="/resources#intake">Show us what's slowing you down</a>
-          <a class="button secondary" href="tel:+14159008563">Call 415-900-8563</a>
-        </div>
-        <div class="phone">
-          <b>You didn't build your phone lines. You use them.</b>
-          <span>AI should work the same way: useful infrastructure, not another job.</span>
-        </div>
-      </div>
-      <div class="sf-bridge">
-        <div class="sf-moon"><img class="sf-mark" src="/assets/silverback-mark.png" alt="" /></div>
-        <img class="hero-photo" src="/assets/golden-gate-hero.png" alt="Golden Gate Bridge in Bay Area fog" />
-        <div class="sf-caption">BAY AREA ROOTS · BUILT FOR THE PEOPLE DOING THE WORK</div>
-      </div>
-    </section>
-
-    <section class="sf-intro">
-      <div class="eyebrow">ONE SILVERBACK · THREE OPERATING LANES</div>
-      <h2>Start with the business you already have.</h2>
-      <p>Different industries have different pressure points. The operating idea stays the same: find the friction, fix the handoff, keep the owner in control.</p>
-    </section>
-
-    <section class="sf-depts">
-      <a href="/counsel" class="dept counsel">
-        <span>COUNSEL</span>
-        <h3>Good firms. Better visibility. Less administrative drag.</h3>
-        <p>Practical website, local visibility, inquiry follow-up and workflow support for law firms.</p>
-        <b>Open department →</b>
-      </a>
-      <a href="/blue-collar" class="dept blue">
-        <span>RED BLOOD · BLUE COLLAR</span>
-        <h3>You do the work. We handle the work around it.</h3>
-        <p>Calls, leads, scheduling, reviews, paperwork and repetitive office work for the people who still have to show up.</p>
-        <b>Open department →</b>
-      </a>
-      <a href="/compliant" class="dept compliant">
-        <img class="dept-mark" src="/assets/compliant-mark.png" alt="" />
-        <span>COMPLIANT</span>
-        <h3>Compliance, done.</h3>
-        <p>Documentation, coordination and follow-through for owners and operators who cannot afford to lose the thread.</p>
-        <b>Open department →</b>
-      </a>
-    </section>
-
-    <section class="sf-layer">
-      <div class="eyebrow">THE OPERATING LAYER</div>
-      <h2>Not a new business. A better layer behind the one you already run.</h2>
-      <div class="sf-grid">
-        <article>
-          <b>01</b>
-          <h3>Keep your tools</h3>
-          <p>Phone, email, calendar, invoicing and the systems you already know stay in place unless there is a clear reason to change them.</p>
-        </article>
-        <article>
-          <b>02</b>
-          <h3>Connect the handoffs</h3>
-          <p>Missed calls, leads, reminders, follow-up, scheduling and routine updates stop depending on memory.</p>
-        </article>
-        <article>
-          <b>03</b>
-          <h3>Add only what earns its keep</h3>
-          <p>If a new system creates another dashboard you have to babysit, it is the wrong system.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="sf-examples">
-      <div class="eyebrow">QUIETLY, BEHIND THE SCENES</div>
-      <h2>The work around the work.</h2>
-      <div class="chips">
-        <span>Calls → follow-up</span>
-        <span>Leads → next action</span>
-        <span>Calendar → confirmations</span>
-        <span>Reviews → reputation</span>
-        <span>Paperwork → organized records</span>
-        <span>Compliance → reminders</span>
-        <span>Website → clear contact paths</span>
-        <span>Local search → useful pages</span>
-      </div>
-    </section>
-
-    <section class="sf-legacy">
-      <div>
-        <div class="eyebrow">NOTHING USEFUL GETS THROWN AWAY</div>
-        <h2>The original Silverback diagnostic and tools stay available.</h2>
-        <p>The old front page becomes the workshop instead of the front door. Existing tools, experiments and intake stay accessible while the public brand gets a cleaner entrance.</p>
-      </div>
+  <section class="hero">
+    <div class="mark">
+      <img src="/assets/silverback-mark.png" alt="Silverback mark" />
+      <div class="word">SILVERBACK <span>AI</span></div>
+      <div class="sub">REAL SOLUTIONS. STRONGER TOMORROWS.</div>
+    </div>
+    <div class="promise">
+      <h1>STRONGER BUSINESSES.<br>SAFER COMMUNITIES.<br><em>BRIGHTER TOMORROWS.</em></h1>
+      <div class="rule"></div>
+      <p>PRACTICAL AI.<br>REAL-WORLD IMPACT.<br>BUILT TO LAST.</p>
+    </div>
+    <div class="icons">
+      <div><div class="tile"><img src="/assets/silverback-mark.png" alt="" /></div><small>APP ICON</small></div>
+      <div><div class="tile light"><img src="/assets/silverback-mark.png" alt="" /></div><small>MONOCHROME</small></div>
+    </div>
+  </section>
+  <section class="strip">
+    <div><strong>⌂</strong>PROTECT</div>
+    <div><strong>▤</strong>GROW</div>
+    <div><strong>☺</strong>PEOPLE FIRST</div>
+    <div><strong>⚙</strong>REAL SOLUTIONS</div>
+    <div><strong>◌</strong>PRACTICAL AI</div>
+    <div><strong>△</strong>BUILT TO LAST</div>
+    <div class="ca">TURNING COMPLEXITY INTO A STRONGER CALIFORNIA.</div>
+  </section>
+  <section class="split">
+    <div class="eye">
+      <p>DISCIPLINE<br>INTELLIGENCE<br>EXECUTION<br><em>A STRONGER TOMORROW</em></p>
+    </div>
+    <div class="gate">
+      <h2>PRACTICAL AI FOR A STRONGER CALIFORNIA.</h2>
+      <p>Helping businesses, professionals, and communities solve real problems with AI, automation, and expertise.</p>
       <div class="actions">
-        <a class="button primary" href="/resources">Open resources + diagnostic</a>
-        <a class="button secondary" href="/app">Open legacy workspace</a>
+        <a class="fill" href="/questionnaire">GET STARTED →</a>
+        <a href="/#approach">OUR APPROACH</a>
       </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="sf-footbrand">
-      <img class="sf-mark" src="/assets/silverback-mark.png" alt="" />
-      <b>SILVERBACK AI</b>
+      <span class="foot">PEOPLE · BUSINESSES · COMMUNITIES</span>
     </div>
-    <div>
-      <a href="mailto:hello@silverbackai.agency">hello@silverbackai.agency</a>
-      ·
-      <a href="tel:+14159008563">415-900-8563</a>
-    </div>
-    <span>Technology should make capable people stronger.</span>
-  </footer>
+  </section>
+  <section class="why" id="approach">
+    <h2>Keep the people. Be the face they already saw.</h2>
+    <p>When every shop has the same agent, the price lands in the same band. People hire who they saw. The field that got redone. The taqueria that can give the tacos away and stay off the sidewalk. The flooring salesperson who still walks in and can say the floor will not trip the robot.</p>
+    <ul>
+      <li>Agents take the inbox and the chase. The roster stays.</li>
+      <li>Hours back go to the compliance file and the neighborhood.</li>
+      <li>Hiding behind the profit is winking in the dark. Nobody sees it.</li>
+    </ul>
+    <p><a class="go" href="/questionnaire" style="display:inline-block">Free questionnaire · no obligation</a></p>
+  </section>
 </body>
 </html>
