@@ -1,13 +1,13 @@
 /**
  * Soft-open face.
- * Default is off, so `/` keeps rendering SilverbackFront.
+ * Default is off, so `/` keeps rendering the brand front.
  *
  * Turn the face on for `/` with either:
  *   - build env VITE_SOFT_OPEN=true
  *   - query ?ff_enable_soft_open=1 (or ?soft=1)
  *   - localStorage silverback_ff.enable_soft_open = true
  *
- * Escape hatch: ?face=live always shows SilverbackFront.
+ * Escape hatch: ?face=live shows the SilverbackFront umbrella home.
  * `/soft-open` always renders the face so it can be previewed while the flag is off.
  */
 

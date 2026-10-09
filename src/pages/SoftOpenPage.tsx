@@ -35,9 +35,9 @@ export default function SoftOpenPage() {
           ))}
         </div>
         <p className="disclaimer">
-          Operator note: this face does not replace SilverbackFront. It shows at /soft-open anytime, and it
-          replaces the home page only when VITE_SOFT_OPEN=true, ?ff_enable_soft_open=1, or ?soft=1. ?face=live
-          always returns the real home page.
+          Operator note: this face does not replace the brand front or SilverbackFront. It shows at /soft-open
+          anytime, and it replaces the home page only when VITE_SOFT_OPEN=true, ?ff_enable_soft_open=1, or
+          ?soft=1. ?face=live returns the SilverbackFront umbrella home. The default home is the brand board.
         </p>
       </main>
     </AgencyShell>

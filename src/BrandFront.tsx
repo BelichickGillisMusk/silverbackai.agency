@@ -1,0 +1,114 @@
+import React from 'react';
+
+export default function BrandFront() {
+  return (
+    <div className="sb-brand">
+      <style>{css}</style>
+      <header className="nav">
+        <img src="/assets/silverback-mark.png" alt="" width="36" height="36" />
+        <b>SILVERBACK AI</b>
+        <nav>
+          <a href="/#approach">Approach</a>
+          <a href="/counsel">Counsel</a>
+          <a href="/blue-collar">Blue collar</a>
+          <a href="/compliant">Compliant</a>
+          <a className="go" href="/questionnaire">Free questionnaire</a>
+        </nav>
+      </header>
+      <section className="hero">
+        <div className="mark">
+          <img src="/assets/silverback-mark.png" alt="Silverback mark" />
+          <div className="word">SILVERBACK <span>AI</span></div>
+          <div className="sub">REAL SOLUTIONS. STRONGER TOMORROWS.</div>
+        </div>
+        <div className="promise">
+          <h1>STRONGER BUSINESSES.<br />SAFER COMMUNITIES.<br /><em>BRIGHTER TOMORROWS.</em></h1>
+          <div className="rule" />
+          <p>PRACTICAL AI.<br />REAL-WORLD IMPACT.<br />BUILT TO LAST.</p>
+        </div>
+        <div className="icons">
+          <div><div className="tile"><img src="/assets/silverback-mark.png" alt="" /></div><small>APP ICON</small></div>
+          <div><div className="tile light"><img src="/assets/silverback-mark.png" alt="" /></div><small>MONOCHROME</small></div>
+        </div>
+      </section>
+      <section className="strip">
+        <div><strong>⌂</strong>PROTECT</div>
+        <div><strong>▤</strong>GROW</div>
+        <div><strong>☺</strong>PEOPLE FIRST</div>
+        <div><strong>⚙</strong>REAL SOLUTIONS</div>
+        <div><strong>◌</strong>PRACTICAL AI</div>
+        <div><strong>△</strong>BUILT TO LAST</div>
+        <div className="ca">TURNING COMPLEXITY INTO A STRONGER CALIFORNIA.</div>
+      </section>
+      <section className="split">
+        <div className="eye">
+          <p>DISCIPLINE<br />INTELLIGENCE<br />EXECUTION<br /><em>A STRONGER TOMORROW</em></p>
+        </div>
+        <div className="gate">
+          <h2>PRACTICAL AI FOR A STRONGER CALIFORNIA.</h2>
+          <p>Helping businesses, professionals, and communities solve real problems with AI, automation, and expertise.</p>
+          <div className="actions">
+            <a className="fill" href="/questionnaire">GET STARTED →</a>
+            <a href="/#approach">OUR APPROACH</a>
+          </div>
+          <span className="foot">PEOPLE · BUSINESSES · COMMUNITIES</span>
+        </div>
+      </section>
+      <section className="why" id="approach">
+        <h2>Keep the people. Be the face they already saw.</h2>
+        <p>When every shop has the same agent, the price lands in the same band. People hire who they saw. The field that got redone. The taqueria that can give the tacos away and stay off the sidewalk. The flooring salesperson who still walks in and can say the floor will not trip the robot.</p>
+        <ul>
+          <li>Agents take the inbox and the chase. The roster stays.</li>
+          <li>Hours back go to the compliance file and the neighborhood.</li>
+          <li>A company can automate the truck. We do not tell them no. The shop that builds in the same city still needs people unloading the ship and filling the next one.</li>
+        </ul>
+        <p><a className="go" href="/questionnaire">Free questionnaire · no obligation</a></p>
+      </section>
+    </div>
+  );
+}
+
+const css = `
+.sb-brand{background:#07090d;color:#f5f5f5;font-family:Inter,system-ui,sans-serif;min-height:100vh}
+.sb-brand a{color:inherit;text-decoration:none}
+.nav{display:flex;align-items:center;gap:18px;padding:16px 22px;border-bottom:1px solid #222;position:sticky;top:0;background:rgba(7,9,13,.94);z-index:5}
+.nav b{letter-spacing:.14em;font-size:13px}
+.nav nav{margin-left:auto;display:flex;gap:16px;align-items:center;font-size:11px;letter-spacing:.12em;font-weight:700}
+.nav nav a{color:#c8c8c8}
+.go{background:#f4f1ea;color:#111!important;padding:10px 14px;border-radius:4px}
+.hero{display:grid;grid-template-columns:1.3fr .9fr .7fr;min-height:520px}
+.mark{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 28px 36px;background:radial-gradient(circle at 50% 40%,#1c1c1c,#07090d 70%)}
+.mark img{width:min(340px,78%);filter:drop-shadow(0 18px 30px #000)}
+.word{margin-top:18px;font-size:clamp(32px,4vw,54px);letter-spacing:.08em;font-weight:800}
+.word span{color:#c4a46a}
+.sub{letter-spacing:.28em;font-size:11px;color:#cfcfcf;margin-top:8px}
+.promise{padding:64px 36px;border-left:1px solid #222;border-right:1px solid #222}
+.promise h1{font-size:clamp(28px,3vw,40px);line-height:1.05;letter-spacing:.04em;margin:0}
+.promise h1 em{font-style:normal;color:#c4a46a}
+.rule{width:42px;height:2px;background:#c4a46a;margin:22px 0}
+.promise p{letter-spacing:.16em;font-size:12px;color:#bdbdbd;line-height:1.8}
+.icons{padding:28px 18px;display:flex;flex-direction:column;gap:16px;align-items:center;justify-content:center}
+.tile{width:148px;height:148px;border-radius:28px;display:grid;place-items:center;background:#141414;border:1px solid #2a2a2a}
+.tile.light{background:#f4f1ea}
+.tile img{width:92px}
+.tile small,.icons small{display:block;text-align:center;letter-spacing:.16em;font-size:10px;color:#9a9a9a;margin-top:8px}
+.strip{display:grid;grid-template-columns:repeat(6,1fr) 1.2fr;background:#f4f1ea;color:#161616;padding:22px 8px}
+.strip div{text-align:center;font-size:10px;letter-spacing:.14em;font-weight:800;padding:8px;border-right:1px solid #ddd}
+.strip strong{display:block;font-size:18px;margin-bottom:8px}
+.ca{display:flex;align-items:center;padding:0 18px;letter-spacing:.08em;font-size:13px;font-weight:800}
+.split{display:grid;grid-template-columns:.9fr 1.3fr;min-height:560px}
+.eye{display:flex;align-items:flex-end;padding:36px;background:#050505 center/cover no-repeat;background-image:linear-gradient(#0000,#000c),url('/assets/silverback-mark.png')}
+.eye p{letter-spacing:.18em;font-weight:800;line-height:1.45;margin:0}
+.eye em{color:#c4a46a;font-style:normal}
+.gate{position:relative;color:#111;background:#123 center/cover no-repeat;background-image:linear-gradient(#ffffffd0,#ffffff66),url('/assets/golden-gate-hero.png');padding:28px 32px 40px}
+.gate h2{font-size:clamp(36px,5vw,64px);line-height:.95;letter-spacing:-.03em;max-width:640px;margin:48px 0 12px}
+.gate p{max-width:520px;font-size:16px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.actions a{padding:12px 16px;font-size:12px;font-weight:800;letter-spacing:.08em;border:1px solid #111}
+.actions .fill{background:#111;color:#fff}
+.foot{position:absolute;right:24px;bottom:16px;letter-spacing:.16em;font-size:11px;font-weight:700}
+.why{padding:64px 22px;max-width:980px;margin:0 auto}
+.why h2{font-size:clamp(28px,4vw,44px);letter-spacing:-.03em}
+.why p,.why li{color:#c8c8c8;font-size:17px;line-height:1.55}
+@media(max-width:900px){.nav nav a:not(.go){display:none}.hero,.split,.strip{grid-template-columns:1fr}.promise,.icons{border:0}.foot{position:static;display:block;margin-top:28px}.gate{padding-bottom:28px}}
+`;

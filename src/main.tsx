@@ -1,6 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
+import BrandFront from './BrandFront.tsx';
 import BlueCollarHome from './BlueCollarHome.tsx';
 import DocumentSeo from './components/DocumentSeo.tsx';
 import SilverbackFront from './SilverbackFront.tsx';
@@ -21,7 +22,11 @@ const page = resolvePage(path, search);
 function renderPage(pageId: PageId) {
   switch (pageId) {
     case 'home':
-      return <SilverbackFront page="home" />;
+      // Main's public front is the brand board. ?face=live still opens the umbrella home.
+      if (new URLSearchParams(search).get('face') === 'live') {
+        return <SilverbackFront page="home" />;
+      }
+      return <BrandFront />;
     case 'counsel':
       return <SilverbackFront page="counsel" />;
     case 'compliant':

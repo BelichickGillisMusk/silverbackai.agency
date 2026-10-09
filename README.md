@@ -1,6 +1,6 @@
 # Silverback AI — silverbackai.agency
 
-This is the agency site for Silverback AI: Counsel, Blue Collar, and Compliant. It is a Vite + React + Tailwind app. The public front is `SilverbackFront` (home, counsel, compliant) and `BlueCollarHome`. The older diagnostic workspace still lives at `/resources`, `/app`, and `/legacy`.
+This is the agency site for Silverback AI: Counsel, Blue Collar, and Compliant. It is a Vite + React + Tailwind app. The public front door is `BrandFront`. `SilverbackFront` still serves Counsel, Compliant, and the umbrella home at `/?face=live`. `BlueCollarHome` is the Blue Collar lane. The questionnaire and the older workshop live at `/questionnaire`, `/resources`, `/app`, and `/legacy`.
 
 `www.silverbackai.agency` already serves this project. The apex host `silverbackai.agency` is a separate Cloudflare route (a Grok Me app). This repo does not change DNS, Cloudflare routing, Vercel domains, or run a deploy.
 
@@ -28,16 +28,16 @@ npm run build    # writes dist/
 
 | Path | What it is |
 | --- | --- |
-| `/` | Agency home (`SilverbackFront`). Anchors: `#lanes`, `#operating-layer`, `#behind-the-scenes`, `#workshop`. |
+| `/` | Brand board (`BrandFront`). Approach anchor: `#approach`. |
 | `/services` | Lane index. |
 | `/counsel`, `/blue-collar`, `/compliant` | The three operating lanes. |
 | `/proof` | Case-study stubs. Empty until a real story is cleared. |
 | `/contact` | Intake form. POSTs JSON to `/api/contact`. |
 | `/privacy`, `/terms` | Draft legal stubs. Not notice and not a contract. |
 | `/soft-open` | Optional holding face. Always previewable. |
-| `/resources`, `/app`, `/legacy` | Legacy workshop. Not the public front. |
+| `/questionnaire`, `/resources`, `/app`, `/legacy` | Questionnaire and the legacy workshop. Not the public front. |
 
-`/?face=live` always shows `SilverbackFront`, even if the soft-open flag is on. `?ff_enable_soft_open=1` or `VITE_SOFT_OPEN=true` swaps `/` to the soft-open face. The component is not removed.
+`/?face=live` shows the `SilverbackFront` umbrella home (anchors `#lanes`, `#operating-layer`, `#behind-the-scenes`, `#workshop`), even if the soft-open flag is on. `?ff_enable_soft_open=1` or `VITE_SOFT_OPEN=true` swaps `/` to the soft-open face. Neither face is deleted. The Pages deploy on `main` still copies `public/index.html` over the built app entry, so production `/` is that static brand page.
 
 Copy, NAP, CTAs, and the route table live in `src/config/site.ts` and `src/content/`. The street address is blank on purpose.
 

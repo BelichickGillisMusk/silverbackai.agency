@@ -24,8 +24,10 @@ for (const url of expected) {
 assert(robots.includes('Sitemap: https://silverbackai.agency/sitemap.xml'), 'robots.txt sitemap pointer');
 assert(robots.includes('Disallow: /api/'), 'robots.txt should hide the intake stub');
 
-assert(resolvePage('/', '') === 'home', 'default home is SilverbackFront');
-assert(resolvePage('/', '?face=live') === 'home', 'face=live keeps SilverbackFront');
+assert(resolvePage('/', '') === 'home', 'default path is the home route');
+assert(resolvePage('/', '?face=live') === 'home', 'face=live stays on the home route');
+assert(resolvePage('/questionnaire', '') === 'legacy', 'questionnaire stays the legacy form');
+assert(resolvePage('/app/extra', '') === 'legacy', 'app subpaths stay legacy');
 assert(resolvePage('/', '?ff_enable_soft_open=1') === 'soft-open', 'flag swaps the home face');
 assert(resolvePage('/', '?ff_enable_soft_open=1&face=live') === 'home', 'face=live wins over the flag');
 assert(resolvePage('/soft-open', '') === 'soft-open', 'soft-open route exists while the flag is off');

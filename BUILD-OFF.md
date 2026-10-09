@@ -9,7 +9,7 @@ Bones are in place so the real site can grow after the apex Grok route is detach
 - Proof slots with no fabricated results (`/proof`).
 - Contact UI plus a no-op `POST /api/contact`.
 - Organization and WebSite JSON-LD, per-route titles, `public/robots.txt`, `public/sitemap.xml`.
-- Soft-open face behind a flag. `SilverbackFront` stays the default home.
+- Soft-open face behind a flag. Default `/` is the brand board (`BrandFront`). `SilverbackFront` stays available at `/?face=live` and on the Counsel and Compliant lanes.
 
 ## Next chunks
 

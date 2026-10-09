@@ -102,7 +102,7 @@ export const publicRoutes: readonly RouteRecord[] = [
   {
     path: '/',
     id: 'home',
-    title: `${brand} | Practical Systems for Businesses That Do the Work`,
+    title: `${brand} — Stronger businesses. Safer communities.`,
     description: site.description,
     sitemap: true,
   },
@@ -176,6 +176,14 @@ export const publicRoutes: readonly RouteRecord[] = [
     title: `Soft open | ${brand}`,
     description:
       'Optional holding face for Silverback AI. The full site stays one click away. Off unless the soft-open flag is on.',
+    sitemap: false,
+    robots: 'noindex, nofollow',
+  },
+  {
+    path: '/questionnaire',
+    id: 'legacy',
+    title: `Free questionnaire | ${brand}`,
+    description: 'The Silverback questionnaire. No obligation.',
     sitemap: false,
     robots: 'noindex, nofollow',
   },

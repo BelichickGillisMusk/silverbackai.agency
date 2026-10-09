@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Silverback AI — Free questionnaire</title>
+<meta name="description" content="Tell us what keeps you up at night. We build the AI that makes it disappear. Free tools and free discovery — no bloated packages." />
+<meta name="theme-color" content="#040b07" />
+<link rel="canonical" href="https://silverbackai.agency/questionnaire" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://silverbackai.agency/questionnaire" />
+<meta property="og:title" content="Silverback AI — Free questionnaire" />
+<meta property="og:description" content="We find what's stealing your time and margins — then build the AI that makes it disappear. Free discovery. Free tools built to help." />
+<meta property="og:site_name" content="Silverback AI" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Silverback AI — Free questionnaire" />
+<meta name="twitter:description" content="Free discovery. Free tools. Real AI that buys your time back." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #040b07;
+    --bg-2: #0a1f14;
+    --bg-3: #0f172a;
+    --glass: rgba(255,255,255,0.03);
+    --border: rgba(255,255,255,0.08);
+    --accent: #00e676;
+    --accent-2: #dbeafe;
+    --text: #ffffff;
+    --muted: rgba(255,255,255,0.65);
+    --dim: rgba(255,255,255,0.4);
+    --radius: 24px;
+    --font: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font);
+    color: var(--text);
+    background-color: var(--bg);
+    background-image:
+      radial-gradient(circle at 0% 0%, var(--bg-2) 0%, var(--bg) 50%),
+      radial-gradient(circle at 100% 100%, var(--bg-3) 0%, var(--bg) 50%);
+    background-attachment: fixed;
+    overflow-x: hidden;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; }
+  ::selection { background: var(--accent); color: #04110a; }
+
+  .grad-text {
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .glass-panel {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: #fff; color: #000; border: none; border-radius: 100px;
+    font-weight: 700; padding: 16px 32px; font-size: 14px; cursor: pointer;
+    transition: transform .2s, background .2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); background: #f0f0f0; }
+  .btn-secondary {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: transparent; color: #fff; border: 1px solid #fff; border-radius: 100px;
+    font-weight: 700; padding: 16px 32px; font-size: 14px; cursor: pointer;
+    transition: transform .2s, background .2s;
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,.1); transform: translateY(-2px); }
+  .eyebrow {
+    font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: .12em;
+    color: var(--muted); display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+  }
+  .eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--accent); display: block; flex-shrink: 0; }
+  .wrap { width: min(1120px, calc(100% - 48px)); margin: 0 auto; }
+  .wrap-wide { width: min(1200px, calc(100% - 48px)); margin: 0 auto; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 0;
+  }
+  .nav-inner { width: min(1200px, calc(100% - 48px)); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 22px; letter-spacing: -0.02em; }
+  .logo-hex {
+    width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    font-size: 14px;
+  }
+  .nav-links { display: flex; align-items: center; gap: 22px; }
+  .nav-links a.nav-a {
+    font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+  }
+  .nav-links a.nav-a:hover { color: #fff; }
+  .nav-links .btn-primary { padding: 10px 22px; font-size: 12px; }
+
+  /* HERO */
+  .hero {
+    position: relative; min-height: calc(100vh - 72px);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 72px 0 56px; overflow: hidden;
+  }
+  .hero-glow-1 {
+    position: absolute; top: -100px; right: -100px; width: 560px; height: 560px;
+    background: radial-gradient(circle, rgba(219,234,254,.08) 0%, transparent 62%);
+    pointer-events: none; z-index: 0;
+  }
+  .hero-glow-2 {
+    position: absolute; bottom: -60px; left: -60px; width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(0,230,118,.08) 0%, transparent 62%);
+    pointer-events: none; z-index: 0;
+  }
+  .hero .wrap { position: relative; z-index: 2; }
+  .hero h1 {
+    font-size: clamp(42px, 7.5vw, 76px); font-weight: 800; line-height: 1.08;
+    letter-spacing: -0.03em; max-width: 14ch;
+  }
+  .hero-sub {
+    margin-top: 24px; max-width: 560px; font-size: 16px; color: var(--muted); line-height: 1.85;
+  }
+  .diff-card {
+    margin-top: 28px; max-width: 680px; padding: 22px 24px;
+  }
+  .diff-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+  .diff-card p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 10px; }
+  .diff-card ul { list-style: none; display: grid; gap: 8px; margin: 12px 0; }
+  .diff-card li { font-size: 13px; color: var(--muted); line-height: 1.55; padding-left: 14px; border-left: 2px solid rgba(0,230,118,.35); }
+  .diff-card li strong { color: #fff; font-weight: 600; }
+  .diff-punch { font-size: 14px; font-weight: 700; color: var(--accent); margin-top: 8px; }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+  .stats {
+    display: flex; flex-wrap: wrap; gap: 36px; margin-top: 48px; padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+  .stat-n { font-size: 28px; font-weight: 800; color: var(--accent); letter-spacing: -0.02em; }
+  .stat-l { font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+
+  /* TICKER */
+  .ticker { background: linear-gradient(90deg, var(--accent), #69f0ae); overflow: hidden; padding: 14px 0; }
+  .ticker-track { display: flex; gap: 48px; width: max-content; animation: tick 28s linear infinite; }
+  .tick {
+    font-size: 13px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase;
+    color: #04110a; white-space: nowrap; display: flex; align-items: center; gap: 48px;
+  }
+  .tick::after { content: "◆"; opacity: .35; font-size: 9px; }
+  @keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track { animation: none; }
+  }
+
+  /* SECTIONS */
+  section.block { padding: 88px 0; position: relative; z-index: 2; }
+  .sec-h {
+    font-size: clamp(32px, 4.5vw, 48px); font-weight: 800; line-height: 1.1;
+    letter-spacing: -0.03em; margin-bottom: 18px;
+  }
+  .sec-p { font-size: 15px; color: var(--muted); max-width: 560px; line-height: 1.75; margin-bottom: 40px; }
+
+  /* PRIMARY PATH */
+  .path-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: var(--border); border: 1px solid var(--border); border-radius: 20px; overflow: hidden;
+  }
+  .path-card {
+    background: rgba(4,11,7,.92); padding: 32px 28px; min-height: 220px;
+    transition: background .25s;
+  }
+  .path-card:hover { background: rgba(10,31,20,.95); }
+  .path-num { font-size: 12px; font-weight: 700; letter-spacing: .16em; color: var(--accent); text-transform: uppercase; margin-bottom: 14px; }
+  .path-card h3 { font-size: 22px; font-weight: 750; margin-bottom: 10px; letter-spacing: -0.02em; }
+  .path-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+  /* FREE TOOLS — secondary */
+  .tools-banner {
+    display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px;
+    margin-bottom: 28px;
+  }
+  .tools-note {
+    font-size: 13px; color: var(--dim); max-width: 420px; line-height: 1.6;
+    border: 1px dashed rgba(0,230,118,.25); border-radius: 12px; padding: 12px 14px;
+  }
+  .tools-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+  }
+  .tool {
+    padding: 22px 20px; border-radius: 18px; border: 1px solid var(--border);
+    background: rgba(255,255,255,.02); transition: border-color .2s, transform .2s;
+    display: flex; flex-direction: column; gap: 10px; min-height: 180px;
+  }
+  .tool:hover { border-color: rgba(0,230,118,.35); transform: translateY(-2px); }
+  .tool-tag {
+    font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--accent); opacity: .9;
+  }
+  .tool h3 { font-size: 17px; font-weight: 700; letter-spacing: -0.02em; }
+  .tool p { font-size: 13px; color: var(--muted); line-height: 1.65; flex: 1; }
+  .tool-link {
+    font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--accent-2); display: inline-flex; align-items: center; gap: 6px;
+  }
+  .tool.muted-tool { opacity: .85; }
+  .tool.muted-tool .tool-tag { color: var(--dim); }
+
+  /* INDUSTRIES strip */
+  .industries {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px;
+  }
+  .chip {
+    font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+    padding: 8px 14px; border-radius: 999px; border: 1px solid var(--border); color: var(--muted);
+  }
+
+  /* INTAKE */
+  .intake-grid {
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: start;
+  }
+  .checks { display: grid; gap: 10px; margin-top: 20px; }
+  .check { display: flex; gap: 10px; align-items: center; font-size: 13px; color: var(--muted); }
+  .check i {
+    width: 20px; height: 20px; border-radius: 999px; border: 1px solid var(--border);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-style: normal; font-size: 11px; color: var(--accent); flex-shrink: 0;
+  }
+  .intake-panel { padding: 28px; min-height: 480px; position: relative; }
+  .step-label { font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+  .step-title { font-size: 24px; font-weight: 750; letter-spacing: -0.02em; margin-bottom: 18px; }
+  .progress { display: flex; gap: 6px; margin-bottom: 22px; }
+  .progress span { flex: 1; height: 3px; border-radius: 99px; background: rgba(255,255,255,.08); }
+  .progress span.on { background: var(--accent); }
+  .choices {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-height: 340px; overflow: auto;
+    padding-right: 4px;
+  }
+  .choice {
+    text-align: left; padding: 14px; border-radius: 14px; border: 1px solid var(--border);
+    background: rgba(255,255,255,.02); color: var(--muted); cursor: pointer; transition: .15s;
+  }
+  .choice:hover, .choice.sel {
+    border-color: rgba(0,230,118,.5); background: rgba(0,230,118,.08); color: #fff;
+  }
+  .choice strong { display: block; font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .choice small { font-size: 12px; color: var(--dim); line-height: 1.45; display: block; }
+  .fields { display: grid; gap: 12px; }
+  .fields input, .fields textarea, .fields select {
+    width: 100%; background: rgba(0,0,0,.25); border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px 16px; color: #fff; font-size: 14px; font-family: inherit;
+    outline: none;
+  }
+  .fields input:focus, .fields textarea:focus { border-color: rgba(0,230,118,.5); }
+  .fields textarea { min-height: 90px; resize: vertical; }
+  .form-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  .form-note { font-size: 11px; color: var(--dim); margin-top: 12px; letter-spacing: .04em; }
+  .success {
+    display: none; text-align: center; padding: 48px 20px;
+  }
+  .success.on { display: block; }
+  .success h3 { font-size: 36px; font-weight: 800; margin: 12px 0; }
+  .success p { color: var(--muted); line-height: 1.75; max-width: 360px; margin: 0 auto; }
+
+  /* FOUNDER */
+  .founder-grid {
+    display: grid; grid-template-columns: .9fr 1.3fr; gap: 48px; align-items: center;
+  }
+  .founder-card {
+    aspect-ratio: 4/5; border-radius: var(--radius); border: 1px solid var(--border);
+    background:
+      radial-gradient(ellipse at 50% 30%, rgba(0,230,118,.06), transparent 60%),
+      rgba(255,255,255,.02);
+    position: relative; overflow: hidden; display: flex; align-items: flex-end;
+  }
+  .founder-bg {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    font-size: clamp(80px, 18vw, 140px); font-weight: 800; color: rgba(255,255,255,.06);
+    letter-spacing: -0.06em; user-select: none;
+  }
+  .founder-meta {
+    position: relative; z-index: 2; width: 100%; padding: 22px;
+    background: linear-gradient(transparent, rgba(4,11,7,.95));
+    border-top: 1px solid rgba(255,255,255,.06);
+  }
+  .founder-meta .name { font-size: 22px; font-weight: 800; }
+  .founder-meta .role { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .tag {
+    font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    padding: 7px 12px; border-radius: 999px; border: 1px solid var(--border); color: var(--muted);
+  }
+  .founder-copy p { font-size: 15px; color: var(--muted); line-height: 1.85; margin-bottom: 14px; }
+  .founder-copy p strong { color: #fff; font-weight: 600; }
+  .founder-copy .closer { font-size: 16px; font-weight: 700; color: #fff; margin: 18px 0 22px; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border); padding: 28px 0 40px;
+  }
+  .foot-inner {
+    width: min(1200px, calc(100% - 48px)); margin: 0 auto;
+    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px;
+  }
+  .foot-tag { font-size: 13px; font-weight: 600; color: var(--muted); }
+  .foot-copy { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--dim); }
+
+  /* mobile nav hide */
+  @media (max-width: 900px) {
+    .path-grid, .tools-grid { grid-template-columns: 1fr; }
+    .intake-grid, .founder-grid { grid-template-columns: 1fr; gap: 28px; }
+    .choices { grid-template-columns: 1fr; max-height: none; }
+    .nav-links a.nav-a { display: none; }
+    .hero { padding-top: 40px; min-height: auto; }
+    .wrap, .wrap-wide, .nav-inner, .foot-inner { width: calc(100% - 32px); }
+  }
+</style>
+</head>
+<body>
+<div style="background:#111;color:#e8c56c;text-align:center;padding:10px 16px;font:600 12px/1.4 Inter,system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase">Free questionnaire · no obligation · <a href="/" style="color:#fff">Back to Silverback AI</a></div>
+<a href="https://silverbackai.agency/cdn-cgi/content?id=tUy7UM2WoXZYLhrwhHSTsmfFTA4AInwOyg5PNxaUVRA-1791348866.9592733-1.2.1.1-1e83NhBPw2TV6V9khhES5c8TVWXY9fk7gZy_ph8MWBJmYhNWQv1JG5bf9n3waW9j" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+
+<header class="glass-panel">
+  <nav>
+    <div class="nav-inner">
+      <a class="logo" href="#top" id="top">
+        <span class="logo-hex" aria-hidden="true">🦍</span>
+        <span class="grad-text">SILVERBACK AI</span>
+      </a>
+      <div class="nav-links">
+        <a class="nav-a" href="#path">How it works</a>
+        <a class="nav-a" href="#free-tools">Free tools</a>
+        <a class="nav-a" href="#story">Story</a>
+        <a class="btn-primary" href="#intake">Free Discovery</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-glow-1" aria-hidden="true"></div>
+    <div class="hero-glow-2" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="eyebrow">AI automation · Any industry · Any budget</div>
+      <h1>What Keeps You<br /><span class="grad-text">Up At Night?</span></h1>
+      <p class="hero-sub">
+        We find what's stealing your time, energy, and margins — then build the AI that makes it disappear.
+        No bloated software. No massive retainers. Exactly what you need, deployed fast.
+      </p>
+
+      <div class="glass-card diff-card">
+        <h3>The Silverback difference: à la carte automation</h3>
+        <p>Most AI shops sell a huge package, ship it, and vanish. We're <strong style="color:#fff">fractional AI integrators</strong> — you buy only what you need.</p>
+        <ul>
+          <li><strong>Big deployment?</strong> Custom platform, shipped clean.</li>
+          <li><strong>Surgical help?</strong> One agent for one bottleneck (ads, books, scheduling).</li>
+          <li><strong>Done-for-you?</strong> We build it and run it.</li>
+          <li><strong>Mentor your team?</strong> We sit with staff and make them 10× faster.</li>
+        </ul>
+        <p class="diff-punch">You buy exactly what you need, for whatever budget you have, whenever you're ready.</p>
+      </div>
+
+      <div class="hero-ctas">
+        <a class="btn-primary" href="#intake">Tell us what keeps you up →</a>
+        <a class="btn-secondary" href="#free-tools">Browse free tools</a>
+      </div>
+
+      <div class="stats">
+        <div><div class="stat-n">24H</div><div class="stat-l">Response</div></div>
+        <div><div class="stat-n">FREE</div><div class="stat-l">Discovery</div></div>
+        <div><div class="stat-n">100%</div><div class="stat-l">Custom built</div></div>
+        <div><div class="stat-n">∞</div><div class="stat-l">Industries</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="tick">What keeps you up at night</span>
+      <span class="tick">We have the solution</span>
+      <span class="tick">Free tools built to help</span>
+      <span class="tick">Any industry</span>
+      <span class="tick">Deployed fast</span>
+      <span class="tick">What keeps you up at night</span>
+      <span class="tick">We have the solution</span>
+      <span class="tick">Free tools built to help</span>
+      <span class="tick">Any industry</span>
+      <span class="tick">Deployed fast</span>
+    </div>
+  </div>
+
+  <section class="block" id="path">
+    <div class="wrap">
+      <div class="eyebrow">The main path</div>
+      <h2 class="sec-h">Name the night.<br /><span class="grad-text">We buy the day back.</span></h2>
+      <p class="sec-p">Everything on this site points here. Free tools below are extras we made to help — not the product pitch.</p>
+      <div class="path-grid">
+        <article class="path-card">
+          <div class="path-num">01 — Tell us</div>
+          <h3>The problem that won't leave you alone</h3>
+          <p>Five honest answers. Three minutes. We map the bottleneck that steals nights and weekends.</p>
+        </article>
+        <article class="path-card">
+          <div class="path-num">02 — We build</div>
+          <h3>Only the AI you actually need</h3>
+          <p>No generic stack. A custom workflow for your industry, your tools, your people — à la carte.</p>
+        </article>
+        <article class="path-card">
+          <div class="path-num">03 — You rest</div>
+          <h3>Time, margin, sleep</h3>
+          <p>Family dinner. Clean books. Ads that don't burn cash. Whatever you said “fixed” looks like.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="free-tools" style="padding-top:40px;">
+    <div class="wrap">
+      <div class="tools-banner">
+        <div>
+          <div class="eyebrow">Secondary · not the pitch</div>
+          <h2 class="sec-h" style="margin-bottom:8px;">Free tools we made<br /><span class="grad-text">just to help.</span></h2>
+          <p class="sec-p" style="margin-bottom:0;">Use them. Share them. No upsell required. When you're ready for something custom, the discovery form is still the front door.</p>
+        </div>
+        <div class="tools-note">These are gifts and demos — not “modules you must buy.” Paid work starts only after you ask.</div>
+      </div>
+
+      <div class="tools-grid">
+        <a class="tool" href="https://dmc-properties.silverbackai.agency" target="_blank" rel="noopener">
+          <span class="tool-tag">Free · live</span>
+          <h3>Rent DMC / property tools</h3>
+          <p>Live property surface we shipped for operators who needed something working — not a deck.</p>
+          <span class="tool-link">Open tool →</span>
+        </a>
+        <a class="tool" href="#intake">
+          <span class="tool-tag">Free · on this page</span>
+          <h3>Night diagnostic</h3>
+          <p>Guided intake that turns “I'm drowning” into a specific plan. Zero obligation.</p>
+          <span class="tool-link">Start diagnostic →</span>
+        </a>
+        <div class="tool muted-tool">
+          <span class="tool-tag">Free · coming</span>
+          <h3>CA compliance check</h3>
+          <p>County licenses, permits, CARB-style mandates before a job blindsides you with a fine.</p>
+          <span class="tool-link">Join waitlist via discovery</span>
+        </div>
+        <div class="tool muted-tool">
+          <span class="tool-tag">Free · coming</span>
+          <h3>Project pre-flight</h3>
+          <p>License · insurance · permits · equipment checklist that runs before every job.</p>
+          <span class="tool-link">Join waitlist via discovery</span>
+        </div>
+        <div class="tool muted-tool">
+          <span class="tool-tag">Free · coming</span>
+          <h3>Mandate alert texts</h3>
+          <p>California rules change quietly. We watch your license class and ping you before deadlines.</p>
+          <span class="tool-link">Join waitlist via discovery</span>
+        </div>
+        <a class="tool" href="/cdn-cgi/l/email-protection#5634242f37381638392435373a353724343b39343f3a337835393b692523343c3335226b053f3a2033243437353d736466302433337364662239393a7364663f323337">
+          <span class="tool-tag">Free · request</span>
+          <h3>Got a tool idea?</h3>
+          <p>If it would buy a small business an hour back, we might just build it and give it away.</p>
+          <span class="tool-link">Email Bryan →</span>
+        </a>
+      </div>
+
+      <div style="margin-top:36px;">
+        <div class="eyebrow">Where this shows up</div>
+        <div class="industries">
+          <span class="chip">Real estate</span>
+          <span class="chip">Law firms</span>
+          <span class="chip">Flooring & trades</span>
+          <span class="chip">Home remodeling</span>
+          <span class="chip">Trucking / CARB</span>
+          <span class="chip">Marketing teams</span>
+          <span class="chip">Any ops bottleneck</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="intake" style="border-top:1px solid var(--border); background: rgba(0,0,0,.18);">
+    <div class="wrap">
+      <div class="intake-grid">
+        <div>
+          <div class="eyebrow">Free discovery</div>
+          <h2 class="sec-h">What keeps you<br /><span class="grad-text">up at night?</span></h2>
+          <p class="sec-p">Tell us what's stealing time. We'll show how AI buys it back — specific plan, not a generic pitch.</p>
+          <div class="checks">
+            <div class="check"><i>✓</i> Completely free · zero obligation</div>
+            <div class="check"><i>✓</i> Any industry, any size</div>
+            <div class="check"><i>✓</i> Custom plan within 24 hours</div>
+            <div class="check"><i>✓</i> À la carte — only what you need</div>
+          </div>
+        </div>
+
+        <div class="glass-card intake-panel">
+          <div id="intakeUI">
+            <div class="progress" id="progress" aria-hidden="true">
+              <span class="on"></span><span></span><span></span>
+            </div>
+
+            <div id="step1">
+              <div class="step-label">// Step 01</div>
+              <h3 class="step-title">What task do you dread most every week?</h3>
+              <div class="choices" id="painChoices"></div>
+            </div>
+
+            <div id="step2" hidden>
+              <div class="step-label">// Step 02</div>
+              <h3 class="step-title">If that were handled — what would you do with the time?</h3>
+              <div class="choices" id="outcomeChoices"></div>
+            </div>
+
+            <div id="step3" hidden>
+              <div class="step-label">// Step 03 — Contact</div>
+              <h3 class="step-title">Where should we send your plan?</h3>
+              <form id="intakeForm" class="fields">
+                <input type="hidden" name="pain" id="painVal" />
+                <input type="hidden" name="outcome" id="outcomeVal" />
+                <input type="text" name="name" placeholder="Your name *" required autocomplete="name" />
+                <input type="email" name="email" placeholder="Email *" required autocomplete="email" />
+                <input type="tel" name="phone" placeholder="Phone (optional)" autocomplete="tel" />
+                <input type="text" name="industry" placeholder="Industry (e.g. flooring, legal, trucking)" />
+                <textarea name="detail" placeholder="Anything else about the night problem? (optional)"></textarea>
+                <div class="form-actions">
+                  <button type="button" class="btn-secondary" id="backBtn" style="padding:12px 20px;font-size:13px;">Back</button>
+                  <button type="submit" class="btn-primary" style="flex:1;">Submit — let's solve this →</button>
+                </div>
+                <p class="form-note">No spam · No pitch · Response within 24 hours · Opens your email app if web form is offline</p>
+              </form>
+            </div>
+          </div>
+
+          <div class="success" id="successBox">
+            <div style="font-size:48px" aria-hidden="true">🦍</div>
+            <h3 class="grad-text">We've got you.</h3>
+            <p>Your answers are in. Bryan will review what you shared and reach out within 24 hours with a specific plan — not a generic pitch.<br /><br />Go do something you actually want to do.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="story">
+    <div class="wrap">
+      <div class="founder-grid">
+        <div>
+          <div class="founder-card">
+            <div class="founder-bg">BG</div>
+            <div class="founder-meta">
+              <div class="name grad-text">Bryan Gillis</div>
+              <div class="role">Founder · Silverback AI</div>
+            </div>
+          </div>
+          <div class="tags">
+            <span class="tag">Charlestown, MA</span>
+            <span class="tag">$7M flooring co.</span>
+            <span class="tag">Marriott hotels</span>
+            <span class="tag">Napa · Bay Area</span>
+          </div>
+        </div>
+        <div class="founder-copy">
+          <div class="eyebrow">Why this works</div>
+          <h2 class="sec-h">Most AI agencies have<br />never run a<br /><span class="grad-text">real business.</span></h2>
+          <p>I grew up in Charlestown, Massachusetts — you learn by doing. That shaped how Silverback operates.</p>
+          <p>Before AI, I built a flooring company to <strong>$7M annual revenue</strong>. I know midnight takeoffs before a 6 AM job. I know the sick feeling when you want a vacation and can't leave the shop.</p>
+          <p>That experience is the edge. I don't just understand models — I understand <strong>the human using them</strong>. Brian in marketing who needs a lifeline. The bookkeeper who's burnt out. The owner who wants weekends back.</p>
+          <p>We don't force a massive box. One week tutoring your staff on one automation — we do that. Empire from scratch — we do that too.</p>
+          <p class="closer">I built Silverback because I've lived inside the problems we solve. Let's fix yours.</p>
+          <a class="btn-primary" href="#intake">Work with someone who gets it →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <a class="logo" href="#top">
+      <span class="logo-hex">🦍</span>
+      <span class="grad-text">SILVERBACK AI</span>
+    </a>
+    <div class="foot-tag">What keeps you up at night?</div>
+    <div class="foot-copy">© <span id="y"></span> Silverback AI · Free tools · Paid work only when you ask</div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+(function () {
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  var PAINS = [
+    { id: 'paperwork', title: 'Paperwork & compliance', desc: 'Forms, filings, reports — hours of zero value' },
+    { id: 'followups', title: 'Chasing clients & follow-ups', desc: 'Reminders and unreturned calls' },
+    { id: 'data', title: 'Spreadsheets & data entry', desc: 'Same data in three places' },
+    { id: 'leads', title: 'Leads slipping through cracks', desc: 'Couldn\'t reply fast enough' },
+    { id: 'billing', title: 'Invoicing & billing delays', desc: 'Work done, payment waiting' },
+    { id: 'scheduling', title: 'Scheduling chaos', desc: 'Double bookings and calendar mess' },
+    { id: 'inventory', title: 'Inventory & supply', desc: 'Not knowing what you have' },
+    { id: 'onboarding', title: 'Employee onboarding', desc: 'Training from scratch every time' },
+    { id: 'questions', title: 'Same questions on loop', desc: 'Repeating yourself all day' },
+    { id: 'cashflow', title: 'Unpredictable cash flow', desc: 'Feast or famine nights' },
+    { id: 'regs', title: 'Keeping up with regulations', desc: 'Surprise fines and rule changes' },
+    { id: 'marketing', title: 'Marketing & social', desc: 'Know you need it, zero time' }
+  ];
+
+  var OUTCOMES = [
+    { id: 'family', title: 'More time with family', desc: 'Games, dinners, actually present' },
+    { id: 'health', title: 'Health & energy back', desc: 'Gym, sleep, not running on fumes' },
+    { id: 'sleep', title: 'Better sleep, less stress', desc: 'Stop the 3 AM worry loop' },
+    { id: 'growth', title: 'Grow the business', desc: 'Work ON it, not only IN it' },
+    { id: 'personal', title: 'Personal life again', desc: 'Travel, hobbies, a real weekend' }
+  ];
+
+  var state = { pain: null, outcome: null, step: 1 };
+
+  function el(id) { return document.getElementById(id); }
+
+  function renderChoices(containerId, items, onPick) {
+    var root = el(containerId);
+    root.innerHTML = '';
+    items.forEach(function (item) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'choice';
+      b.innerHTML = '<strong>' + item.title + '</strong><small>' + item.desc + '</small>';
+      b.addEventListener('click', function () {
+        root.querySelectorAll('.choice').forEach(function (c) { c.classList.remove('sel'); });
+        b.classList.add('sel');
+        onPick(item);
+      });
+      root.appendChild(b);
+    });
+  }
+
+  function setProgress(n) {
+    var spans = el('progress').querySelectorAll('span');
+    spans.forEach(function (s, i) { s.classList.toggle('on', i < n); });
+  }
+
+  function showStep(n) {
+    state.step = n;
+    el('step1').hidden = n !== 1;
+    el('step2').hidden = n !== 2;
+    el('step3').hidden = n !== 3;
+    setProgress(n);
+  }
+
+  renderChoices('painChoices', PAINS, function (item) {
+    state.pain = item;
+    el('painVal').value = item.title;
+    setTimeout(function () { showStep(2); }, 220);
+  });
+
+  renderChoices('outcomeChoices', OUTCOMES, function (item) {
+    state.outcome = item;
+    el('outcomeVal').value = item.title;
+    setTimeout(function () { showStep(3); }, 220);
+  });
+
+  el('backBtn').addEventListener('click', function () {
+    if (state.step === 3) showStep(2);
+    else if (state.step === 2) showStep(1);
+  });
+
+  el('intakeForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var fd = new FormData(el('intakeForm'));
+    var name = (fd.get('name') || '').toString().trim();
+    var email = (fd.get('email') || '').toString().trim();
+    var phone = (fd.get('phone') || '').toString().trim();
+    var industry = (fd.get('industry') || '').toString().trim();
+    var detail = (fd.get('detail') || '').toString().trim();
+    var pain = state.pain ? state.pain.title : (fd.get('pain') || '');
+    var outcome = state.outcome ? state.outcome.title : (fd.get('outcome') || '');
+
+    var body =
+      'Silverback discovery\\n\\n' +
+      'Name: ' + name + '\\n' +
+      'Email: ' + email + '\\n' +
+      'Phone: ' + phone + '\\n' +
+      'Industry: ' + industry + '\\n\\n' +
+      'Pain: ' + pain + '\\n' +
+      'If fixed: ' + outcome + '\\n\\n' +
+      'Detail:\\n' + detail + '\\n';
+
+    // Prefer mailto so nothing is lost if no form backend is wired
+    var mailto =
+      'mailto:bryan@norcalcarbmobile.com' +
+      '?subject=' + encodeURIComponent('Silverback discovery — ' + name) +
+      '&body=' + encodeURIComponent(body.replace(/\\n/g, '\n'));
+
+    try {
+      window.location.href = mailto;
+    } catch (err) {}
+
+    el('intakeUI').style.display = 'none';
+    el('successBox').classList.add('on');
+    try {
+      localStorage.setItem('sb_discovery_' + Date.now(), JSON.stringify({
+        name: name, email: email, phone: phone, industry: industry,
+        pain: pain, outcome: outcome, detail: detail, at: new Date().toISOString()
+      }));
+    } catch (err2) {}
+  });
+})();
+</script>
+<script>window.__CF$cv$params={r:'a46a4ed27a0fd351',t:'MTc5MTM0ODg2Ng==',u:'01a114b67fc1763b9eb3fb4c55c86a5b',ut:'glZYETGGdcD6RazHgu_BfxP6ebFOlG63lbcRjDUGGW4-1791348867-1.2.1.1-rG3a1cPQbLjbUrTlfjlQYj1XZcy7jGyiFxfYMK6HuxE2FmZo0su.05VlJzoKRpFu9rEAUWpHaJoMG5odUf95aBhtVopd0sVhKtfIap_bqeU',i:60};(function(){if(!document.body)return;var s=document.createElement('script');s.src='/cdn-cgi/challenge-platform/scripts/precursor/main.js';document.head.appendChild(s);})();</script></body>
+</html>

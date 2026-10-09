@@ -11,6 +11,8 @@ export function resolvePage(pathname: string, search: string): PageId {
   if (params.has('appParams') || params.get('app') === '1') return 'legacy';
 
   const path = normalizePath(pathname);
+  // Main keeps the night form at /questionnaire and any /app... path on the legacy app.
+  if (path === '/questionnaire' || path.startsWith('/app')) return 'legacy';
   if (path === '/' && isSoftOpenEnabled(search)) return 'soft-open';
 
   const match = publicRoutes.find((route) => route.path === path);
