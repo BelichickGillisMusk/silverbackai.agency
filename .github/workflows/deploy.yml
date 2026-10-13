@@ -22,7 +22,7 @@ jobs:
           test -f public/questionnaire.html
           cp public/index.html dist/index.html
           cp public/questionnaire.html dist/questionnaire.html
-          grep -q "Stronger businesses" dist/index.html
+          grep -q "golden-gate-hero" dist/index.html
           grep -q "Free questionnaire" dist/questionnaire.html
       - name: Disable worker-route wrangler.toml for Pages deploy
         run: |
