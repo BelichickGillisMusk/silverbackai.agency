@@ -1,0 +1,11 @@
+# Silverback AI — public crawl rules for https://silverbackai.agency/
+# Apex DNS is a separate Cloudflare route. This file applies once this build is what that host serves.
+
+User-agent: *
+Allow: /
+Disallow: /app
+Disallow: /legacy
+Disallow: /soft-open
+Disallow: /api/
+
+Sitemap: https://silverbackai.agency/sitemap.xml

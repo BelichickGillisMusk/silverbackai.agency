@@ -64,7 +64,7 @@ export default function BlueCollarHome() {
             <a href="#what-we-do">What we do</a>
             <a href="#who-we-help">Who we help</a>
             <a href="#how-it-works">How it works</a>
-            <a className="sb-cta-small" href="/?appParams=intake">Show me what you'd fix</a>
+            <a className="sb-cta-small" href="/contact">Show me what you'd fix</a>
           </nav>
         </div>
       </header>
@@ -76,7 +76,7 @@ export default function BlueCollarHome() {
             <h1>You do the work. <em>We handle the work around it.</em></h1>
             <p className="sb-hero-copy">Websites, Google Business Profile, reviews, lead follow-up, simple automation and compliance systems for contractors, fleets, shops and local service businesses. No lectures. No AI theater.</p>
             <div className="sb-buttons">
-              <a className="sb-button sb-button-primary" href="/?appParams=intake">Show me what you'd fix first</a>
+              <a className="sb-button sb-button-primary" href="/contact">Show me what you'd fix first</a>
               <a className="sb-button sb-button-secondary" href="#what-we-do">See the practical stuff</a>
             </div>
             <div className="sb-proof">
@@ -144,13 +144,13 @@ export default function BlueCollarHome() {
             <div className="sb-eyebrow">Strength in service</div>
             <h2>You're good at your work. You shouldn't have to be good at all of this too.</h2>
             <p className="sb-lead" style={{color:'#d7e0e6'}}>Let us show you the first three things we would fix. No lecture. No giant proposal.</p>
-            <div className="sb-buttons"><a className="sb-button sb-button-primary" href="/?appParams=intake">Show me the three things</a></div>
+            <div className="sb-buttons"><a className="sb-button sb-button-primary" href="/contact">Show me the three things</a></div>
           </div>
         </section>
       </main>
 
       <footer className="sb-footer">
-        <div className="sb-wrap sb-footer-inner"><strong>SILVERBACK.</strong><span>Technology should make capable people stronger—not make them feel behind.</span></div>
+        <div className="sb-wrap sb-footer-inner"><strong>SILVERBACK.</strong><span>Technology should make capable people stronger—not make them feel behind.</span><span><a href="/">Agency</a> · <a href="/services">Services</a> · <a href="/proof">Proof</a> · <a href="/contact">Contact</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span></div>
       </footer>
     </div>
   );
